@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-course",
+  "version": "1.0.0",
+  "description": "code snippets and projects for nodejs course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bala Krishna Ragala",
+  "license": "ISC",
+  "dependencies": {
+    "builtin-modules": "^1.1.1",
+    "install": "^0.8.4",
+    "npm": "^4.1.2",
+    "path": "^0.12.7"
+  }
+}

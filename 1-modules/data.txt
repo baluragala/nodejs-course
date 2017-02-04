@@ -1,0 +1,4 @@
+In JavaScript, almost all I/O is non-blocking. This includes HTTP requests, database operations and disk reads and writes;
+the single thread of execution asks the runtime to perform an operation, providing a callback function and then moves on to
+do something else. When the operation has been completed, a message is enqueued along with the provided callback function.
+At some point in the future, the message is dequeued and the callback fired.
