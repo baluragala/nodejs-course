@@ -4,6 +4,6 @@
 const fs = require('fs');
 const zlib = require('zlib');
 
-fs.createReadStream('events.js')
+fs.createReadStream('1-events.js')
   .pipe(zlib.createGzip())
   .pipe(fs.createWriteStream('events.zip'));

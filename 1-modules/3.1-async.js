@@ -8,7 +8,7 @@ const fs = require('fs');
 console.log('1. Before file read');
 try {
   data = fs.readFile('data.txt', 'utf-8', function (err, content) {
-    console.log('2 FILEDATA : ' + content);
+    console.log('2 FILEDATA : ' + content.toUpperCase());
     console.log('3. After file read');
   });
 } catch (e) {

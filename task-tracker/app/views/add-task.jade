@@ -1,0 +1,30 @@
+//
+   Created by moksha on 11/02/17.
+extends ./layout.jade
+
+block content
+    .container-fluid
+        .row.content
+            .col-sm-3.sidenav
+                ul.nav.nav-pills.nav-stacked
+                    li.active
+                        a(href='/tasks') Tasks
+                br
+                ul.nav.nav-pills.nav-stacked
+                    li.active
+                        a(href='/add-task') Add Task
+                br
+            .col-sm-9
+                h4 Add Task
+                - var foo = "hello world"
+                form(method='post', action='/tasks')
+                    input#token(type='hidden', value= token)
+                    .form-group
+                        label(for='title') Title :
+                        input#title.form-control(type='text')
+                    .form-group
+                        label(for='description') Description:
+                        input#description.form-control(type='text')
+                    button.btn.btn-default(type='submit') Add
+    footer.container-fluid
+        p Footer Text

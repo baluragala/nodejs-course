@@ -1,0 +1,39 @@
+//
+   Created by moksha on 11/02/17.
+
+extends ./layout.jade
+block content
+    .container-fluid
+        .row.content
+            .col-sm-3.sidenav
+                h4 Task Manager
+                ul.nav.nav-pills.nav-stacked
+                    li.active
+                        a(href='/tasks') Tasks
+                br
+                ul.nav.nav-pills.nav-stacked
+                    li.active
+                        a(href='/add-task') Add Task
+                br
+            h4
+                small Your Tasks
+            hr
+            center
+                h2
+                    span.glyphicon.glyphicon-plus
+            each task in tasks
+                .col-sm-9
+                    h2= task.title
+                    h5
+                        if(task.status == 'NEW')
+                            span.label.label-danger NEW
+                        else
+                            span.label.label-primary COMPLETED
+                    h5
+                        span.glyphicon.glyphicon-tasks
+                        = task.created.toDateString()
+                    p= task.description
+                    br
+
+    footer.container-fluid
+        p Footer Text

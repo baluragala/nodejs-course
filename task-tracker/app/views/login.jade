@@ -1,0 +1,15 @@
+//
+   Created by moksha on 11/02/17.
+extends ./layout.jade
+
+block content
+    .col-sm-9
+        h4 Login
+        form(method='post', action='/tasks')
+            .form-group
+                label(for='username') Title :
+                input#username.form-control(type='text')
+            .form-group
+                label(for='password') Description:
+                input#password.form-control(type='password')
+            button.btn.btn-default(type='submit') login

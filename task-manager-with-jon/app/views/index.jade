@@ -1,0 +1,12 @@
+doctype html
+html(lang='en')
+ head
+  meta(charset='UTF-8')
+  title Task Manager
+ body
+  h1 Task Manager
+  - var titleOfPage='Hello Jade'
+  p= titleOfPage
+  ul
+   each o in tasks
+    li= o.title.toUpperCase()
