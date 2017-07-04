@@ -1,0 +1,10 @@
+extends layout.jade
+
+block content
+    case subscription
+        when 'PREMIUM'
+            p you have PREMIUM subscription
+        when 'PAID'
+            p you have PAID subscription
+        default
+            p you have FREE subscription

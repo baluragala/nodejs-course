@@ -1,0 +1,156 @@
+Mongodb
+------
+mongod - deamon process that provides database services (server)
+mongo - CLI to interact with mongodb
+
+RDBMS
+-----
+Database - Database
+Table - Collection
+Row - Document
+Column - Field
+
+Index - index
+Join - embedded docs
+Primary Key - PK
+
+Sparse - 
+--------
+
+products (sports)
+-----------------
+Cricket Bat
+Tennis Bat
+Golf Stick
+
+
+
+SQL
+---
+create table Prodcuct(
+id integer primary key autoincrement,
+title varchar(100),
+price number(12,4),
+soh number(12,4),
+)
+
+insert into Products values('iphone',600,10)
+
+
+NoSQL
+-----
+db.products.insert({
+  
+})
+
+
+
+Mongoose
+--------
+
+Schema - structural contract
+
+
+var mongoose=require('mongoose'),
+    Schema=mongoose.Schema;
+
+//step - 1
+mongoose.connect('mongodb://localhost/online-store-test')
+
+// step - 2 define schme
+var ProductSchema = new Schema({
+  title:{type:String,required:true, lowercase:true, trim:true},
+  description:String,
+  stock:{type:Number,min:0},
+  price:{type:Number,min:1,required:true},
+  created_at:{type:Date, default:Date.now}
+})
+
+// create instance methods
+
+ProductSchema.methods.titleUpper =  function() {
+  return this.title.toUpperCase();
+}
+
+//create static methods
+
+ProductSchema.statics.findByTitle = function(title,callback){
+  return this.find({title:title},callback)
+}
+
+//virtuals
+ProductSchema
+  .virtual('titleWithDesc')
+  .get(function(){
+    return this.title + "-" + this.description
+  })
+
+//step 3 - create model
+var Product = mongoose.model('Product',ProductSchema)
+
+var iphone = new Product({title:'IPHONE',description:'by apple',stock:10,price:500})
+
+
+Create
+-------
+save - instance
+create - static
+
+Read
+----
+find(conditions,[fields],[options],[callback])
+findById(id,[fields],[options],[callback])
+findOne(conditions,[fields],[options],[callback])
+
+
+< > <= >= == !=
+
+$lt $gt $lte $gte $eq $ne $in $nin
+
+Update
+-------
+update(conditions,update,[options],[callback])
+findByIdAndUpdate(id,[fields],[options],[callback])
+findOneAndUpdate(conditions,update[fields],[options],[callback])
+
+Delete
+------
+remove(conditions,)
+findByIdAndRemove(id,[fields],[options],[callback])
+findOneAndRemove(conditions,update[fields],[options],[callback])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

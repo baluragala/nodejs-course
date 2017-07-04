@@ -1,6 +1,30 @@
 extends layout
 
 block content
-  h1= title
-  p By Zeolearn, authored by
-    span(style='font-weight:bold') &nbsp; Bala Krishna Ragala (@baluragala)
+    h1= title
+    p By Zeolearn, authored by
+        span(style='font-weight:bold') &nbsp; Bala Krishna Ragala (@baluragala)
+    fieldset
+        legend Apis
+        fieldset
+            legend Courses
+            pre.
+                GET     /courses
+                POST    /courses
+                GET     /courses/:id
+                PUT     /courses/:id
+                DELETE  /courses/:id
+                GET     /courses/:id/authors
+                POST    /courses/:id/authors
+                DELETE  /courses/:id/authors/:authorId
+        fieldset
+            legend Author
+            pre.
+                GET     /authors
+                POST    /authors
+                GET     /authors/:id
+                PUT     /authors/:id
+                DELETE  /authors/:id
+                GET     /authors/:id/courses
+                POST    /authors/:id/courses
+                DELETE  /authors/:id/courses/:courseId

@@ -1,0 +1,23 @@
+//
+   Created by moksha on 05/05/17.
+
+extends layout
+
+block content
+    - var user = { description: 'User details' }
+    - var authorised = false
+    #user
+        //
+            create div with id user
+
+        if user.description
+            h2.green Description
+            p.description= user.description
+        else if authorised
+            h2.blue Description
+            p.description.
+                User has no description,
+                why not add one...
+        else
+            h2.red Description
+            p.description User has no description

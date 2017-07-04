@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    -var animals=['dog','cat','tiger','lion']
+    fieldset
+        legend using JS loops (model data)
+        div
+            ul
+                - for (fruit of fruits) {
+                li= fruit
+                - }
+
+    fieldset
+        legend using jade loops (local variable)
+        div
+            ul
+            for animal in animals
+                li= animal

@@ -1,4 +1,4 @@
-const fs=require('fs')
+const fs=require('fs');
 
 fs.watch('copy.js', (eventType, filename) => {
   console.log(`event type is: ${eventType}`);

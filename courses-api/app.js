@@ -31,14 +31,20 @@ app.use('/', index);
 app.use('/users', users);
 
 //courses routes
-app.route('/courses')
-  .get(courses.findAll)
-  .post(courses.create);
+// 1. GET /courses
+// 2. POST /courses
 
+app.route('/courses')
+	.get(courses.findAll)
+	.post(courses.create);
+
+// 1. GET /courses/:id
+// 2. PUT /courses/:id
+// 1. DELETE /courses/:id
 app.route('/courses/:id')
-  .get(courses.find)
-  .put(courses.update)
-  .delete(courses.delete);
+	.get(courses.find)
+	.put(courses.update)
+	.delete(courses.delete);
 
 
 app.get('/courses/:id/authors', courses.getAuthorsByCourseId);
@@ -48,13 +54,13 @@ app.delete('/courses/:id/authors/:authorId', courses.deleteAuthor);
 
 // Authors routes
 app.route('/authors')
-  .get(authors.findAll)
-  .post(authors.create);
+	.get(authors.findAll)
+	.post(authors.create);
 
 app.route('/authors/:id')
-  .get(authors.find)
-  .put(authors.update)
-  .delete(authors.delete);
+	.get(authors.find)
+	.put(authors.update)
+	.delete(authors.delete);
 
 app.post('/authors/:id/courses', authors.addCourse);
 app.delete('/authors/:id/courses/:courseId', authors.deleteCourse);
@@ -62,20 +68,20 @@ app.delete('/authors/:id/courses/:courseId', authors.deleteCourse);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handler - error middleware
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 module.exports = app;
