@@ -20,7 +20,8 @@ var userSchema = new mongoose.Schema({
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
+		lowercase: true
 	},
 	password: {
 		type: String,
@@ -40,7 +41,11 @@ var userSchema = new mongoose.Schema({
 		type: Date,
 		required: false
 	},
-	salt: String
+	salt: String,
+	role: {
+		type: String,
+		default: 'USER'
+	},
 });
 
 userSchema.plugin(generateId());

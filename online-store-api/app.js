@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var config = require('./config/environment');
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+let config = require('./config');
 
-var app = express();
+let app = express();
 
 mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.connection.on('error', function (err) {
@@ -39,10 +40,12 @@ app.use('/api/carts', require('./api/carts'));
 app.use('/api/comments', require('./api/comments'));
 app.use('/api/ratings', require('./api/ratings'));
 app.use('/api/users', require('./api/users'));
+app.use('/api/auth', require('./api/auth'));
+
 /*api routes - END*/
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-	var err = new Error('Not Found');
+	let err = new Error('Not Found');
 	err.status = 404;
 	next(err);
 });
@@ -52,7 +55,11 @@ app.use(function (err, req, res, next) {
 	// set locals, only providing error in development
 	res.locals.message = err.message;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
+	console.log(req.url);
+	console.log(err)
 
+	if (req.url.includes('/api/') && err.status)
+		res.status(err.status).json({status: err.status, message: err.inner.message});
 	// render the error page
 	res.status(err.status || 500);
 	res.render('error');

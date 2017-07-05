@@ -21,5 +21,14 @@ html
                 a(href='/categories') List
               li
                 a(href='/categories/add') Add
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              | Products
+              span.caret
+            ul.dropdown-menu
+              li
+                a(href='/products') List
+              li
+                a(href='/products/add') Add
 
     block content

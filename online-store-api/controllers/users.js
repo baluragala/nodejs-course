@@ -8,7 +8,7 @@ module.exports = {
 
 	findAll: function (req, res, next) {
 		User
-			.find({}, {first_name: 1, last_name: 1, email: 1, gender: 1, mobile: 1})
+			.find({}, {first_name: 1, last_name: 1, email: 1, gender: 1, mobile: 1, id: 1})
 			.then(responseWithResult(res))
 			.catch(handleError(res))
 	},

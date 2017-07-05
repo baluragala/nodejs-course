@@ -1,14 +1,14 @@
-var express = require('express');
-var controller = require('../controllers/users');
+let express = require('express');
+let controller = require('../controllers/users');
+let auth = require('../auth/helper');
 
-var router = express.Router();
+let router = express.Router();
 
-router.get('/', controller.findAll);
-router.get('/:id', controller.findById);
+router.get('/', auth.hasRole('ADMIN'), controller.findAll);
+router.get('/:id', auth.isAuthenticated(), controller.findById);
 router.post('/signup', controller.create);
 router.post('/login', controller.authenticate);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
-router.delete('/:id', controller.delete);
+router.put('/:id', auth.isAuthenticated, controller.update);
+router.delete('/:id', auth.hasRole('ADMIN'), controller.delete);
 
 module.exports = router;
