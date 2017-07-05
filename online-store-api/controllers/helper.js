@@ -4,7 +4,7 @@ exports.handleError = function (res, statusCode) {
 		console.error(err, statusCode);
 		res.status(statusCode).send(err);
 	};
-}
+};
 
 exports.responseWithResult = function (res, statusCode) {
 	statusCode = statusCode || 200;

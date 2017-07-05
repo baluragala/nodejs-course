@@ -27,13 +27,19 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*app routes - START*/
+app.use('/categories', require('./app/categories'));
+
+/*app routes - END*/
+
+/*api routes - START*/
 app.use('/api/products', require('./api/products'));
 app.use('/api/categories', require('./api/categories'));
 app.use('/api/carts', require('./api/carts'));
 app.use('/api/comments', require('./api/comments'));
 app.use('/api/ratings', require('./api/ratings'));
 app.use('/api/users', require('./api/users'));
-
+/*api routes - END*/
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	var err = new Error('Not Found');

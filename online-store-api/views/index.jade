@@ -1,5 +1,13 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html(lang='en')
+  head
+    title Jade
+  body
+    h1 Jade - node template engine
+    #container.col
+      p You are amazing
+      p
+        | Jade is a terse and simple
+        | templating language with a
+        | strong focus on performance
+        | and powerful features.

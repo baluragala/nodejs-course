@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+  - var index=0
+  ul
+    //this is a while loop
+    while index < categories.length
+      li= categories[index++].name.toUpperCase()

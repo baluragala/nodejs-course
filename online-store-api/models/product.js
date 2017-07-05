@@ -40,7 +40,7 @@ var productSchema = new mongoose.Schema({
 	},
 	ratings: [{
 		type: mongoose.Schema.ObjectId,
-		ref: 'User'
+		ref: 'Rating'
 	}],
 	comments: [{
 		type: mongoose.Schema.ObjectId,
