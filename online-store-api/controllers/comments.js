@@ -1,8 +1,17 @@
 var Comment = require('../models/comment');
+let Product = require('../models/product');
 var handleError = require('./helper').handleError;
 var responseWithResult = require('./helper').responseWithResult;
 var handleEntityNotFound = require('./helper').handleEntityNotFound;
 
+function addCommentToProduct(res) {
+	return function (comment) {
+		Product
+			.findByIdAndUpdate(comment.product_id, {$push: {comments: comment._id}})
+			.then(responseWithResult(res))
+			.catch(handleError(res));
+	}
+}
 
 module.exports = {
 
@@ -24,8 +33,8 @@ module.exports = {
 	create: function (req, res, next) {
 		Comment
 			.create(req.body)
-			.then(responseWithResult(res, 201))
-			.catch(handleError(res));
+			.then(addCommentToProduct(res))
+
 	},
 
 	update: function (req, res, next) {

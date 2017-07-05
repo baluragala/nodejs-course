@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var generateId = require('./plugins/generateId');
-
+let sampleComment = {
+	"text": "Good Product",
+	"product_id": "595d27904170e391363b6541",
+	"comment_by": "595d243b8461eb8f02dc88fb"
+}
 var commentSchema = new mongoose.Schema({
 	id: {
 		type: Number,
@@ -24,7 +28,8 @@ var commentSchema = new mongoose.Schema({
 	},
 	comment_date: {
 		type: Date,
-		required: false
+		required: false,
+		default: Date.now
 	}
 });
 

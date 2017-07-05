@@ -2,6 +2,15 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var generateId = require('./plugins/generateId');
 
+var sampleProduct = {
+	"name":"iPhone 7",
+	"category":"595d268f316a7890b358ffb5",
+	"description":"A phone by apple inc.,",
+	"soh":200,
+	"price":600,
+	"image":''
+}
+
 var productSchema = new mongoose.Schema({
 	id: {
 		type: Number,
@@ -18,7 +27,7 @@ var productSchema = new mongoose.Schema({
 	},
 	category: {
 		type: mongoose.Schema.ObjectId,
-		ref: 'Cart'
+		ref: 'Category'
 	},
 	description: {
 		type: String,
