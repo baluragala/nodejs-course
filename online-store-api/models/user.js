@@ -1,13 +1,19 @@
 var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-var generateId = require('./plugins/generateId');
+var addressSchema = require('./address');
 var crypto = require('crypto');
+var generateId = require('./plugins/generateId');
+
 
 var sampleUser = {
 	"email": "bala@zeolearn",
 	"first_name": "bala",
 	"last_name": "ragala",
-	"password": "1234"
+	"password": "1234",
+	"billing_address": {
+		"line1": "Parklane Chumbak",
+		"city": "Newyork",
+		"state": "NY"
+	}
 };
 
 var userSchema = new mongoose.Schema({
@@ -46,6 +52,8 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		default: 'USER'
 	},
+	billing_address: addressSchema,
+	shipping_address: addressSchema
 });
 
 userSchema.plugin(generateId());

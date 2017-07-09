@@ -5,6 +5,7 @@ var router = express.Router();
 
 router.get('/', controller.findAll);
 router.get('/category', controller.findWithCategory);
+router.get('/category/:categoryId', controller.findAllByCategory);
 router.get('/comments', controller.findWithComments);
 router.get('/ratings', controller.findWithRatings);
 router.get('/:id', controller.findById);

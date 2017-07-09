@@ -3,12 +3,12 @@ mongoose.Promise = require('bluebird');
 var generateId = require('./plugins/generateId');
 
 var sampleProduct = {
-	"name":"iPhone 7",
-	"category":"595d268f316a7890b358ffb5",
-	"description":"A phone by apple inc.,",
-	"soh":200,
-	"price":600,
-	"image":''
+	"name": "Mung Beans",
+	"category": "595f1c38dd9a1d226d38a94e",
+	"description": "Urad (also known as black gram, black lentil, Hindi: urad, Gujarati: adad), is a little black seed with a white interior",
+	"soh": 200,
+	"price": 8,
+	"image": '15.png'
 }
 
 var productSchema = new mongoose.Schema({

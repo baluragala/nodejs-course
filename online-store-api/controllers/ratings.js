@@ -1,8 +1,18 @@
 var Rating = require('../models/rating');
+var Product = require('../models/product');
 var handleError = require('./helper').handleError;
 var responseWithResult = require('./helper').responseWithResult;
 var handleEntityNotFound = require('./helper').handleEntityNotFound;
 
+
+function addRatingToProduct(res) {
+	return function (rating) {
+		Product
+			.findByIdAndUpdate(rating.product_id, {$push: {ratings: rating._id}})
+			.then(responseWithResult(res, 201))
+			.catch(handleError(res));
+	}
+}
 
 module.exports = {
 
@@ -24,8 +34,8 @@ module.exports = {
 	create: function (req, res, next) {
 		Rating
 			.create(req.body)
-			.then(responseWithResult(res, 201))
-			.catch(handleError(res));
+			.then(addRatingToProduct(res))
+
 	},
 
 	update: function (req, res, next) {

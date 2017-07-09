@@ -6,10 +6,17 @@ var handleEntityNotFound = require('./helper').handleEntityNotFound;
 module.exports = {
 	findAll: function (req, res, next) {
 		Product
-		 .find()
-		 .then(responseWithResult(res))
-		 .catch(handleError(res))
+			.find()
+			.then(responseWithResult(res))
+			.catch(handleError(res))
 
+	},
+
+	findAllByCategory: function (req, res, next) {
+		Product
+			.find({category: req.params.categoryId})
+			.then(responseWithResult(res))
+			.catch(handleError(res))
 	},
 
 	findById: function (req, res, next) {
